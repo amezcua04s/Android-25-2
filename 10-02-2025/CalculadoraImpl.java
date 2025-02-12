@@ -1,17 +1,15 @@
-import java.io.*;
+class CalculadoraImpl implements ICalculadora {
 
-class CalculadoraImlp implements ICalculadora{
-
-	Double calcular(Operation operacion){
-		switch (operacion.getOperando()){
-			case SUMMA:
-				return operacion.getx1() + operacion.getx2					
-			break;
+	public Double calcular(Operacion operacion) {
 		
-		}
-					
+		switch (operacion.getOperando()) {
 
-	return 0.0;	
+			case SUMA:
+				return operacion.getX1() + operacion.getX2();
+			default:
+				return 0.0;
+
+		}		
 
 	}
 

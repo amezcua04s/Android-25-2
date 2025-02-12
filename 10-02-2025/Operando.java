@@ -1,3 +1,3 @@
-public enum Operando{
-	case SUMA, RESTA, DIV, MULT
+enum Operando {
+	SUMA, RESTA, MULT, DIV;
 }

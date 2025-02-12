@@ -1,12 +1,11 @@
-import java.io.*
-class Main{
+class Main {
 
-	public static void main(string[] main){
+	public static void main(String[] pepe) {
 
 		Operacion op = new Operacion(10.0, 10.0, Operando.SUMA);
 		ICalculadora calculadora = new CalculadoraImpl();
-		Double resultado = Calculadora.calcular(op);
-			
+		
+		Double resultado = calculadora.calcular(op);
 		System.out.println("Tu resultado es: " + resultado);
 	}
 
