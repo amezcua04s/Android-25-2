@@ -6,6 +6,12 @@ class CalculadoraImpl implements ICalculadora {
 
 			case SUMA:
 				return operacion.getX1() + operacion.getX2();
+			case RESTA:
+				return operacion.getx1() - operacion.getx2();
+			case MULT:
+				return operacion.getx1() * operacion.getx2();
+			case DIV:
+				return operacion.getx1() / operacion.getx2();
 			default:
 				return 0.0;
 
