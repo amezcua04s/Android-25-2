@@ -2,29 +2,29 @@ package com.example.calculadora1902;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.util.Log;
-import android.util.LogPrinter;
-import android.view.KeyEvent;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.text.NumberFormat;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    TextView txvMitexto;
-    Button btnReinicio;
+    TextView txvValor, txvTermino;
+    Button btnAumentar, btnReinicio;
     //String cadena = "";
-    Double a = 1.0;
-    Double b = 0.0;
+    Double a = 1.0, b = 0.0, resultado = 0.0;
+    int contador = 1;
+
+    final NumberFormat entero = NumberFormat.getInstance();
 
 
     @SuppressLint("MissingInflatedId")
@@ -40,10 +40,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
         //Log.println(Log.INFO, null, "onCreate savedInstanceState");
 
-        txvMitexto = findViewById(R.id.txv_main);
-        btnReinicio = findViewById(R.id.btn_reinicio);
+        txvValor = findViewById(R.id.txv_valor);
+        txvTermino = findViewById(R.id.txv_termino);
 
-        btnReinicio.setOnClickListener(this);
+        btnAumentar = findViewById(R.id.btn_increase);
+        btnReinicio = findViewById(R.id.btn_restart);
+
+        btnAumentar.setOnClickListener(this);
 
         //Copiar y pegar las dos lineas en los metodos del ciclo de vida de una activity
         //cadena += "\n| onCreate(savedInstanceState, persistentState)";
@@ -105,15 +108,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txvMitexto.setText(cadena);
     }*/
 
+
     @Override
     public void onClick(View v) {
 
-        this.a += this.b;
-        txvMitexto.setText("Serie Fibonnaci\n" + this.a.toString());
-        this.b = this.a;
-
+        this.resultado = this.a + this.b;
+        txvValor.setText(entero.format(this.resultado));
+        if(this.b == 0.0){
+            this.b = 1.0;
+            this.contador ++;
+        } else {
+            this.b = this.a;
+            this.a = this.resultado;
+            this.contador++;
+        }
+        txvTermino.setText("" + this.contador);
     }
 
+    public void reinicia(View dos){
+        this.a = 1.0;
+        this.b = 0.0;
+        this.resultado = 1.0;
+        this.contador = 1;
+        txvTermino.setText("" + this.contador);
+        txvValor.setText(entero.format(this.resultado));
+
+    }
 
 
 }
