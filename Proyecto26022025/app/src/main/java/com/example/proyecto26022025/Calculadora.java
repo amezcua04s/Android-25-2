@@ -19,4 +19,9 @@ public class Calculadora implements ICalculadora{
         }
         return BigDecimal.ZERO;
     }
+
+    @Override
+    public BigDecimal calculate(Object operacion, Object x, Object y) {
+        return null;
+    }
 }

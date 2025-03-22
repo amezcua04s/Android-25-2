@@ -6,4 +6,6 @@ public interface ICalculadora {
 
     BigDecimal calculate(Operacion operacion, BigDecimal x, BigDecimal y);
 
+    BigDecimal calculate(Object operacion, Object x, Object y);
+
 }

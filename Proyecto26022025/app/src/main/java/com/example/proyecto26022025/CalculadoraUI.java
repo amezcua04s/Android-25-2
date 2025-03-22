@@ -6,9 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-    public class CalculadoraUI implements ICalculadoraUI, View.OnClickListener{
+import java.math.BigDecimal;
 
-
+public class CalculadoraUI implements ICalculadoraUI, View.OnClickListener {
     ICalculadoraMemoria memoria = new CalculadoraMemoria();
     Context context;
     TextView txvDisplay;
@@ -31,9 +31,15 @@ import android.widget.TextView;
     Button btnOcho;
     Button btnNueve;
     Button btnCero;
+    ICalculadora logica;
 
-    public CalculadoraUI(Activity activity){
 
+    public CalculadoraUI(Activity activity, ICalculadora logica){
+
+
+        ICalculadoraOnResult calculadoraResult = null;
+
+        this.logica = logica;
         context = activity.getApplicationContext();
         txvDisplay = activity.findViewById(R.id.salida_textView);
 
@@ -96,6 +102,13 @@ import android.widget.TextView;
 
         btnMasMenos.setOnClickListener(v -> {});
         btnIgual.setOnClickListener(v -> {
+            if (calculadoraResult != null){
+                memoria.igual();
+                calculadoraResult.onResult(
+                        memoria.getX(),
+                        memoria.getY(),
+                        memoria.getOperacion());
+            }
         });
         btnSuma.setOnClickListener( v -> {
             addOperation(Operacion.SUMA);
@@ -113,6 +126,7 @@ import android.widget.TextView;
             addOperation(Operacion.PORC);
         });
         btnPunto.setOnClickListener(v -> {});
+
     }
 
     @Override
@@ -127,8 +141,9 @@ import android.widget.TextView;
 
     @Override
     public String addNumber(String numero) {
-        txvDisplay.setText(numero);
-        return memoria.concat(numero);
+        String newValue =  memoria.concat(numero);
+        txvDisplay.setText(newValue);
+        return newValue;
     }
 
     @Override
@@ -137,10 +152,12 @@ import android.widget.TextView;
         memoria.concat(operacion);
     }
 
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()){
 
-            }
-        }
+    @Override
+    public void onClick(View v) {
+
     }
+}
+
+
+
