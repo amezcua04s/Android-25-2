@@ -15,13 +15,14 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-
     final NumberFormat entero = NumberFormat.getInstance();
     long tInicio = System.currentTimeMillis();
     final int eLength = 1000000;
     TextView txv_primero, txv_ultimo, txv_mitad;
     String cPrimero = "", cUltimo = "", cMitad = "";
     Random eNumero = new Random();
+
+    Sort arregla = new Sort();
 
     int[] arreglo = new int[eLength];
 
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         }
         Log.i("EXITO","Arreglo creado "+ arreglo[0] + " ; " + arreglo[eLength-1]);
 
-        Sort.quickSort(arreglo, 0, eLength-1);
+        arregla.quickSort(arreglo, 0, eLength-1);
 
         txv_primero = findViewById(R.id.txv_primero);
         txv_ultimo = findViewById(R.id.txv_ultimo);

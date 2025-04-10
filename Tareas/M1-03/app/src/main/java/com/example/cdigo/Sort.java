@@ -2,6 +2,9 @@ package com.example.cdigo;
 
 public class Sort {
 
+    public Sort() {
+    }
+
     public static void quickSort(int[] arreglo, int ePrimero, int eUltimo){
 
         if(ePrimero >= eUltimo){

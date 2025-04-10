@@ -3,7 +3,7 @@ package com.example.a05032025;
 import java.math.BigDecimal;
 
 public class CalculadoraMemoria implements ICalcudoraMemoria {
-    private String display = "0.0";
+    private String display = "";
 
     private Operacion operacion;
 
