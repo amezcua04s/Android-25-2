@@ -188,10 +188,8 @@ public class GoogleSignInActivity extends AppCompatActivity {
     // [END sign_out]
 
     private void updateUI(FirebaseUser user) {
-if(user != null){
-    txvUser.setText(user.getDisplayName() + "\n" + user.getEmail());
-}
-
-
+        if(user != null){
+            txvUser.setText(user.getDisplayName() + "\n" + user.getEmail());
+        }
     }
 }
