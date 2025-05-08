@@ -36,11 +36,6 @@ public class Calculos implements ICalculos{
             //Calorias en el renglon
             String renglonCal;
 
-
-            //Para mostrar valores en pantalla
-            this.txv_nombre = activity.findViewById(R.id.txv_nombre);
-            this.txv_total = activity.findViewById(R.id.txv_total);
-
             //Leer linea por linea
             while((renglonCal = lector.readLine()) != null){
 
